@@ -2,10 +2,9 @@ import { Document, InferSchemaType, Schema, model } from "mongoose";
 
 export interface IPatient extends Document {
   name: string;
-  password: string;
   email: string;
   appointments: string[];
-  notes?: string[];
+  notes?: string;
 }
 
 export const patientSchema = new Schema({

@@ -1,8 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
-import { connectToCluster } from "./cluster";
 import cors from "cors";
 import patientRoutes from "./routes/patients";
+import appointmentRoutes from "./routes/appointments";
+import { connectToCluster } from "./cluster";
 
 dotenv.config();
 
@@ -15,7 +16,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 
+// Set up routing
 app.use("/", patientRoutes);
+app.use("/", appointmentRoutes);
 
 app.get("/", (req, res) => {
   return res.json("AcuPatient!");

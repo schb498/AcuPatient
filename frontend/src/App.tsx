@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { Route, Routes, BrowserRouter as Router } from "react-router-dom"; // Import BrowserRouter
 import axios from "axios";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import { Button } from "./components/ui/button";
+import PatientList from "./pages/PatientListPage";
+import { Layout } from "./components/Layout";
+import PatientListPage from "./pages/PatientListPage";
 
 function App() {
   const [response, setResponse] = useState("");
@@ -21,18 +23,19 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href='https://vitejs.dev' target='_blank'>
-          <img src={viteLogo} className='logo' alt='Vite logo' />
-        </a>
-        <a href='https://react.dev' target='_blank'>
-          <img src={reactLogo} className='logo react' alt='React logo' />
-        </a>
-      </div>
-      <h1>AcuPatient</h1>
+      {/* <h1>AcuPatient</h1>
       <p className='read-the-docs'>Store and view your patients' data</p>
       <Button onClick={fetchData}>Fetch Data</Button>
       <p>{response}</p>
+      <main>
+        <PatientList />
+      </main> */}
+      <Layout />
+      <Router>
+        <Routes>
+          <Route path='/patient-list' element={<PatientListPage />} />
+        </Routes>
+      </Router>
     </>
   );
 }
