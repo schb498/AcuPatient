@@ -24,7 +24,8 @@ export const patientSchema = new Schema({
   },
   notes: {
     type: String,
-    required: false
+    required: false,
+    default: ""
   }
 });
 

@@ -10,15 +10,13 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT ?? 4000;
 
-console.log("PORT:", process.env.PORT);
-
 app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 
 // Set up routing
-app.use("/", patientRoutes);
-app.use("/", appointmentRoutes);
+app.use("/patients", patientRoutes);
+app.use("/appointments", appointmentRoutes);
 
 app.get("/", (req, res) => {
   return res.json("AcuPatient!");

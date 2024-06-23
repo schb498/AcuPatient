@@ -1,14 +1,15 @@
 import { Document, InferSchemaType, Schema, model } from "mongoose";
 
 export interface IAppointment extends Document {
-  patient: string;
+  patientId: string;
   details: string;
-  treatment: string;
+  treatment?: string;
 }
 
 export const appointmentSchema = new Schema({
-  patient: {
-    type: String,
+  patientId: {
+    type: Schema.Types.ObjectId,
+    ref: "Patient",
     required: true
   },
   details: {
@@ -17,7 +18,8 @@ export const appointmentSchema = new Schema({
   },
   treatment: {
     type: String,
-    required: false
+    required: false,
+    default: ""
   }
 });
 

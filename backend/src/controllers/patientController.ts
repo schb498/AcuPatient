@@ -13,19 +13,15 @@ export const getPatients = async (req: Request, res: Response, next: NextFunctio
 export const addPatient = async (req: Request, res: Response, next: NextFunction) => {
   try {
     // Extract patient details from the request body
-    const { name, email, appointments, notes } = req.body;
+    const { name, email, notes } = req.body;
 
     // Create a new patient document, excluding notes if it's not provided
     const newPatient: Partial<IPatient> = {
       name,
       email,
-      appointments
+      appointments: [],
+      notes: notes || ""
     };
-
-    // Add notes only if provided
-    if (notes) {
-      newPatient.notes = notes;
-    }
 
     // Save the patient document to the database
     const savedPatient = new Patient(newPatient);

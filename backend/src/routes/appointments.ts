@@ -3,6 +3,7 @@ import * as appointmentController from "../controllers/appointmentController";
 
 const router = express.Router();
 
-router.get("/appointments", appointmentController.getAppointments);
+router.get("/", appointmentController.getAppointments);
+router.post("/", appointmentController.addAppointment);
 
 export default router;

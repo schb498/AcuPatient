@@ -3,6 +3,7 @@ import * as patientController from "../controllers/patientController";
 
 const router = express.Router();
 
-router.get("/patients", patientController.getPatients);
+router.get("/", patientController.getPatients);
+router.post("/", patientController.addPatient);
 
 export default router;
