@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { Route, Routes, BrowserRouter as Router } from "react-router-dom"; // Import BrowserRouter
+import { useState } from "react";
+import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
 import { Button } from "./components/ui/button";
 import PatientList from "./pages/PatientListPage";
 import { Layout } from "./components/Layout";
 import PatientListPage from "./pages/PatientListPage";
+import "./app/globals.css";
 
 function App() {
   const [response, setResponse] = useState("");
@@ -22,7 +23,7 @@ function App() {
   };
 
   return (
-    <>
+    <Router>
       {/* <h1>AcuPatient</h1>
       <p className='read-the-docs'>Store and view your patients' data</p>
       <Button onClick={fetchData}>Fetch Data</Button>
@@ -30,13 +31,15 @@ function App() {
       <main>
         <PatientList />
       </main> */}
+
       <Layout />
-      <Router>
-        <Routes>
-          <Route path='/patient-list' element={<PatientListPage />} />
-        </Routes>
-      </Router>
-    </>
+      <Routes>
+        <Route path='/dashboard' element={<h3>DASHBOARD</h3>} />
+        <Route path='/patients' element={<h3>PATIENTS</h3>} />
+        <Route path='/appointments' element={<h3>APPOINTMENTS</h3>} />
+        <Route path='/calendar' element={<h3>CALENDAR</h3>} />
+      </Routes>
+    </Router>
   );
 }
 
