@@ -2,10 +2,8 @@ import { useState } from "react";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
-import { Button } from "./components/ui/button";
-import PatientList from "./pages/PatientListPage";
 import { Layout } from "./components/Layout";
-import PatientListPage from "./pages/PatientListPage";
+import { PatientDataTable } from "./components/PatientDataTable";
 import "./app/globals.css";
 
 function App() {
@@ -32,12 +30,14 @@ function App() {
         <PatientList />
       </main> */}
 
-      <Layout />
       <Routes>
-        <Route path='/dashboard' element={<h3>DASHBOARD</h3>} />
-        <Route path='/patients' element={<h3>PATIENTS</h3>} />
-        <Route path='/appointments' element={<h3>APPOINTMENTS</h3>} />
-        <Route path='/calendar' element={<h3>CALENDAR</h3>} />
+        <Route path='/' element={<Layout />}>
+          <Route path='/dashboard' element={<h3>DASHBOARD</h3>} />
+          <Route path='/patients' element={<PatientDataTable />} />
+          <Route path='/appointments' element={<h3>APPOINTMENTS</h3>} />
+          <Route path='/calendar' element={<h3>CALENDAR</h3>} />
+          <Route path='*' element={<h3>404 - Not Found</h3>} />
+        </Route>
       </Routes>
     </Router>
   );
